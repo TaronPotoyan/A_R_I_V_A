@@ -6,7 +6,7 @@
     "dev": "nodemon --watch src --ext ts,json --exec \"node --loader ts-node/esm\" src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "format": "pnpm exec prettier --write 'src/**/*.ts' 'controllers/**/*.ts' 'middleware/**/*.ts' 'models/**/*.ts' 'routers/**/*.ts' 'util/**/*.ts'",
+    "format": "pnpm exec prettier --write 'src/**/*.ts' 'controllers/**/*.ts' 'models/**/*.ts' 'routers/**/*.ts' 'middleware/**/*.ts' 'interfaces/**/*.ts' 'util/**/*.ts' || true",
     "format:check": "pnpm exec prettier --check 'src/**/*.ts' 'controllers/**/*.ts' 'middleware/**/*.ts' 'models/**/*.ts' 'routers/**/*.ts' 'util/**/*.ts'"
   },
   "dependencies": {

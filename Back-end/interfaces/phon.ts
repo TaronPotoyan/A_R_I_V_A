@@ -13,6 +13,7 @@ export interface IPhone {
   shortDescription?: string;
   createdAt?: Date;
   updatedAt?: Date;
-  length : string;
-  image : string;
+  length: string;
+  image: string;
+  value: number;
 }

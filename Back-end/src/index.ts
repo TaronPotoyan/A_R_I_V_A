@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import route_phone from '../routers/route_phone.ts';
+import route_aceesories from '../routers/route_aceesories.ts';
 
 dotenv.config();
 
@@ -27,5 +28,5 @@ async function ConnectToDB() {
 }
 ConnectToDB();
 
-
-app.use('/phones',route_phone);
+app.use('/phones', route_phone);
+app.use('/aceesories' , route_aceesories);

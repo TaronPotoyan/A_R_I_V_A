@@ -12,12 +12,14 @@ export default class ControllerAll extends ABSProduct {
       const phones = await Phone.find();
 
       if (phones.length === 0) {
-         res.status(404).json({ message: 'No products found' });
-         return;
+        res.status(404).json({ message: 'No products found' });
+        return;
       }
 
-      const response = [...phones];
-
+      let response = [...phones];
+      /* 
+        add other products
+      */
       res.status(200).json({ data: response });
     } catch (e) {
       console.error(`Error: ${e}`);

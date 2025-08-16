@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import type { IPhone } from '../interfaces/phon.ts';
 
-const PhoneSchema  = new mongoose.Schema(
+const PhoneSchema = new mongoose.Schema(
   {
-    image : {type : String , required : true},
+    image: { type: String, required: true }, // url
     model: { type: String, required: true },
     yearOfAnnouncement: { type: String },
     os: { type: String, required: true },
@@ -17,6 +17,7 @@ const PhoneSchema  = new mongoose.Schema(
     weight: { type: String },
     shortDescription: { type: String },
     length: { type: String, required: true },
+    value: { type: Number, required: true },
   },
   {
     timestamps: true,
