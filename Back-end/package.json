@@ -1,0 +1,23 @@
+{
+  "name": "Mobix",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts,json --exec \"node --loader ts-node/esm\" src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "ts-node": "^10.9.2",
+    "@types/node": "^24.3.0",
+    "@types/express": "^5.0.3",
+    "@types/cors": "^2.8.19",
+    "nodemon": "^3.1.10"
+  }
+}
