@@ -29,4 +29,4 @@ async function ConnectToDB() {
 ConnectToDB();
 
 app.use('/phones', route_phone);
-app.use('/aceesories' , route_aceesories);
+app.use('/aceesories', route_aceesories);

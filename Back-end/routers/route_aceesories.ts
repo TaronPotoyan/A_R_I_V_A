@@ -10,7 +10,6 @@ route_aceesories.get('/', accesory.Get);
 
 route_aceesories.post('/', middleware.IsValidKey, accesory.Post);
 
-route_aceesories.get('/:id' , accesory.GetSpec);
-
+route_aceesories.get('/:id', accesory.GetSpec);
 
 export default route_aceesories;

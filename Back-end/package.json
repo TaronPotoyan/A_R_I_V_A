@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch src --ext ts,json --exec \"node --loader ts-node/esm\" src/index.ts",
+    "dev": "nodemon --watch ./ --ext ts,json --ignore node_modules --exec \"node --loader ts-node/esm\" src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
     "format": "pnpm exec prettier --write 'src/**/*.ts' 'controllers/**/*.ts' 'models/**/*.ts' 'routers/**/*.ts' 'middleware/**/*.ts' 'interfaces/**/*.ts' 'util/**/*.ts' || true",
