@@ -12,4 +12,7 @@ route_aceesories.post('/', middleware.IsValidKey, accesory.Post);
 
 route_aceesories.get('/:id', accesory.GetSpec);
 
+route_aceesories.delete('/:id' ,middleware.IsValidKey,accesory.Delete);
+
+
 export default route_aceesories;

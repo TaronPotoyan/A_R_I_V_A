@@ -8,7 +8,6 @@ export default class PhonesController extends ABS {
     constructor() {
         super();
         console.log('hello');
-        
     }
 
     async Get(req: Request, res: Response): Promise<void> {
@@ -62,5 +61,25 @@ export default class PhonesController extends ABS {
             res.status(500).json({ message: 'Server error' });
         }
         return;
+    }
+    async Delete(req: Request, res: Response): Promise<void> {
+        try {
+            const { id: _id } = req.params;
+            const phone: IPhone | null = await Phone.findById(_id);
+            if (phone === null) {
+                res.status(404).json({ message: 'Not found product' });
+                return;
+            }
+            const result = await Phone.findByIdAndDelete(_id);
+            if (!!result) {
+                res.status(200).json({ message: 'Deleted' });
+                return;
+            } else {
+                res.status(400).json({ message: 'Can not delete' });
+            }
+        } catch (e) {
+            console.error(`Error ${e}`);
+            res.status(500).json({ message: 'Server error' });
+        }
     }
 }
