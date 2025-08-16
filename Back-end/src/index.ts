@@ -2,8 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import route_phone from '../routers/route_phone.ts';
-import route_aceesories from '../routers/route_aceesories.ts';
+import route_phone from '../routers/route_phone.js';
+import route_aceesories from '../routers/route_aceesories.js';
 
 dotenv.config();
 
@@ -15,16 +15,16 @@ app.use(cors());
 app.use(express.json());
 
 async function ConnectToDB() {
-  try {
-    await mongoose.connect(MONGO_URL);
-    console.log('✅ MongoDB connected successfully');
-    app.listen(PORT, () => {
-      console.log(`🚀 Server is listening on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error('❌ MongoDB connection error:', error);
-    process.exit(1);
-  }
+    try {
+        await mongoose.connect(MONGO_URL);
+        console.log('✅ MongoDB connected successfully');
+        app.listen(PORT, () => {
+            console.log(`🚀 Server is listening on http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.error('❌ MongoDB connection error:', error);
+        process.exit(1);
+    }
 }
 ConnectToDB();
 

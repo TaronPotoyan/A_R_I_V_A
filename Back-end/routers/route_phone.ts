@@ -1,6 +1,6 @@
 import express from 'express';
-import PhonesController from '../controllers/phone.controller.ts';
-import Middlware from '../middleware/MIdllwares.ts';
+import PhonesController from '../controllers/phone.controller.js';
+import Middlware from '../middleware/MIdllwares.js';
 
 const phonesController = new PhonesController();
 const midllwares = new Middlware();

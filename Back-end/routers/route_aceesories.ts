@@ -1,6 +1,6 @@
 import express from 'express';
-import ControllerAccessory from '../controllers/aceesories.controller.ts';
-import Middlwares from '../middleware/MIdllwares.ts';
+import ControllerAccessory from '../controllers/aceesories.controller.js';
+import Middlwares from '../middleware/MIdllwares.js';
 
 const route_aceesories = express.Router();
 const accesory = new ControllerAccessory();
