@@ -7,7 +7,6 @@ import mongoose, { mongo } from 'mongoose';
 export default class PhonesController extends ABS {
     constructor() {
         super();
-        console.log('hello');
     }
 
     async Get(req: Request, res: Response): Promise<void> {
@@ -79,6 +78,30 @@ export default class PhonesController extends ABS {
             }
         } catch (e) {
             console.error(`Error ${e}`);
+            res.status(500).json({ message: 'Server error' });
+        }
+    }
+
+    async Update(req: Request, res: Response): Promise<void> {
+        try {
+            const phoneData = req.body;
+            const { id } = req.params;
+
+            if (!phoneData || !id) {
+                res.status(400).json({ message: 'Bad request' });
+                return;
+            }
+
+            const updatedPhone = await Phone.findByIdAndUpdate(id, phoneData, { new: true });
+
+            if (!updatedPhone) {
+                res.status(404).json({ message: 'Phone not found' });
+                return;
+            }
+
+            res.status(200).json(updatedPhone);
+        } catch (e) {
+            console.log(`Error ${e}`);
             res.status(500).json({ message: 'Server error' });
         }
     }

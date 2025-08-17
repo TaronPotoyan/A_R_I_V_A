@@ -57,8 +57,8 @@ class ControllerAccessory extends ABS {
     }
 
     async Delete(req: Request, res: Response): Promise<void> {
-      console.log('Works');
-      
+        console.log('Works');
+
         try {
             const { id: _id } = req.params;
             const accesor: IAccessory | null = await Accessory.findById(_id);
@@ -75,6 +75,30 @@ class ControllerAccessory extends ABS {
             }
         } catch (e) {
             console.error(`Error ${e}`);
+            res.status(500).json({ message: 'Server error' });
+        }
+    }
+
+    async Update(req: Request, res: Response): Promise<void> {
+        try {
+            const accesor = req.body;
+            const { id } = req.params;
+
+            if (!accesor || !id) {
+                res.status(400).json({ message: 'Bad request' });
+                return;
+            }
+
+            const updatedAccesor = await Accessory.findByIdAndUpdate(id, accesor, { new: true });
+
+            if (!updatedAccesor) {
+                res.status(404).json({ message: 'Item not found' });
+                return;
+            }
+
+            res.status(200).json(updatedAccesor);
+        } catch (e) {
+            console.log(`Error ${e}`);
             res.status(500).json({ message: 'Server error' });
         }
     }

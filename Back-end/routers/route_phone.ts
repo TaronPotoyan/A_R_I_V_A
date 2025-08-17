@@ -12,7 +12,9 @@ route.get('/:id', phonesController.GetSpec);
 
 route.post('/', midllwares.IsValidKey, phonesController.Post);
 
-route.delete('/:id',midllwares.IsValidKey,phonesController.Delete);
+route.delete('/:id', midllwares.IsValidKey, phonesController.Delete);
+
+route.patch('/:id' , midllwares.IsValidKey,phonesController.Update);
 
 
 export default route;

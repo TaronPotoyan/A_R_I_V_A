@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import Phone from '../models/Phone.js';
 import ABSProduct from '../interfaces/abstratc_product.js';
+import { IPhone } from '../interfaces/phon.js';
+import { IAccessory } from '../interfaces/aceesories.js';
+import Accessory from '../models/Aceesories.js';
 
 export default class ControllerAll extends ABSProduct {
     constructor() {
@@ -9,17 +12,12 @@ export default class ControllerAll extends ABSProduct {
 
     async GetAll(req: Request, res: Response): Promise<void> {
         try {
-            const phones = await Phone.find();
-
-            if (phones.length === 0) {
-                res.status(404).json({ message: 'No products found' });
-                return;
+            const phones: IPhone[] = await Phone.find();
+            const accesor: IAccessory[] = await Accessory.find();
+            const response = [...phones, ...accesor];
+            if (!phones || !accesor) {
+                res.status(404).json({ message: 'Datas not found' });
             }
-
-            let response = [...phones];
-            /* 
-        add other products
-      */
             res.status(200).json({ data: response });
         } catch (e) {
             console.error(`Error: ${e}`);

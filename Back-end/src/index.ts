@@ -5,6 +5,7 @@ import cors from 'cors';
 import route_phone from '../routers/route_phone.js';
 import route_aceesories from '../routers/route_aceesories.js';
 import route_admin from '../routers/route_admin.js';
+import route from '../routers/route_phone.js';
 
 dotenv.config();
 
@@ -32,3 +33,4 @@ ConnectToDB();
 app.use('/phones', route_phone);
 app.use('/aceesories', route_aceesories);
 app.use('/admin', route_admin);
+app.use('/', route);

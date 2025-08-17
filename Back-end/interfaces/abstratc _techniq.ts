@@ -7,6 +7,7 @@ abstract class ABS {
     abstract GetSpec(req: Request, res: Response): Promise<void>;
     abstract Post(req: Request, res: Response): Promise<void>;
     abstract Delete(req: Request, res: Response): Promise<void>;
+    abstract Update(req: Request, res: Response): Promise<void>;
 }
 
 export default ABS;
