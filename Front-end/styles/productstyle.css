@@ -1,0 +1,115 @@
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 12px rgba(46, 204, 113, 0.2);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 480px;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow:
+        0 0 24px #2ecc71,
+        0 0 48px #27ae60;
+}
+
+.product-image-wrapper {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #121212;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.product-card:hover .product-image-wrapper {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 16px #2ecc71,
+        0 0 32px #27ae60;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.product-title {
+    margin: 0.75rem 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow:
+        0 0 4px #2ecc71,
+        0 0 8px #27ae60;
+    transition: text-shadow 0.3s ease;
+}
+
+.product-price {
+    color: #2ecc71;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.buy-button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 0 12px #2ecc71;
+    transition: all 0.3s ease;
+}
+
+.buy-button:hover {
+    background: linear-gradient(135deg, #27ae60, #1e8449);
+    transform: scale(1.08) rotate(-1deg);
+    box-shadow:
+        0 0 20px #2ecc71,
+        0 0 40px #27ae60;
+}
+
+/* Responsive products */
+@media (max-width: 768px) {
+    .product-card {
+        height: auto;
+    }
+
+    .product-image-wrapper {
+        height: 220px;
+    }
+}
