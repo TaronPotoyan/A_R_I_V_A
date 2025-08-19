@@ -7,7 +7,9 @@ export default function Header() {
             <Link to="/" className="logo-link">
                 <div className="logo-text">A R I V A</div>
             </Link>
-            <div className="header-welcome">Welcome to our shop !</div>
+            <div className="header-welcome">
+                🎉 WELCOME TO THE COOLEST SHOP EVER!!! 🛒💚
+            </div>
             <nav>
                 <ul className="nav-list">
                     <li>

@@ -1,3 +1,4 @@
+/* ===== HEADER BASE ===== */
 .header {
     display: flex;
     align-items: center;
@@ -22,6 +23,7 @@
     background: linear-gradient(90deg, #121212, #0d0d0d);
 }
 
+/* ===== LOGO TEXT ===== */
 .logo-text {
     font-size: 2.2rem;
     font-weight: 900;
@@ -31,13 +33,19 @@
     -webkit-text-fill-color: transparent;
     animation: neonGradient 3s infinite alternate;
     cursor: pointer;
-    text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
-    transition: transform 0.4s, text-shadow 0.4s;
+    text-shadow:
+        0 0 10px #2ecc71,
+        0 0 20px #27ae60;
+    transition:
+        transform 0.4s,
+        text-shadow 0.4s;
 }
 
 .logo-text:hover {
     transform: rotate(-3deg) scale(1.08);
-    text-shadow: 0 0 20px #2ecc71, 0 0 40px #27ae60;
+    text-shadow:
+        0 0 20px #2ecc71,
+        0 0 40px #27ae60;
 }
 
 @keyframes neonGradient {
@@ -49,14 +57,47 @@
     }
 }
 
+/* ===== WELCOME MESSAGE ===== */
 .header-welcome {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 900;
     color: #2ecc71;
-    text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
-    animation: neonPulse 2s infinite alternate;
+    text-shadow:
+        0 0 12px #2ecc71,
+        0 0 24px #27ae60,
+        0 0 36px #2ecc71;
+    animation:
+        neonPulse 1.5s infinite alternate,
+        bounce 2s infinite;
+    text-align: center;
 }
 
+/* Neon Pulse Animation */
+@keyframes neonPulse {
+    0% {
+        text-shadow:
+            0 0 10px #2ecc71,
+            0 0 20px #27ae60;
+    }
+    100% {
+        text-shadow:
+            0 0 20px #2ecc71,
+            0 0 40px #27ae60;
+    }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ===== NAVIGATION ===== */
 .nav-list {
     display: flex;
     gap: 2rem;
@@ -64,6 +105,7 @@
     margin: 0;
     padding: 0;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .nav-link,
@@ -76,6 +118,7 @@
     border-radius: 8px;
     transition: all 0.4s ease;
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-link::after {
@@ -97,37 +140,72 @@
 .nav-icon-link:hover {
     color: #2ecc71;
     transform: translateY(-2px) scale(1.05);
-    text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
+    text-shadow:
+        0 0 10px #2ecc71,
+        0 0 20px #27ae60;
 }
 
-@media (max-width: 768px) {
+/* ===== RESPONSIVE ===== */
+
+/* Tablets & small laptops */
+@media (max-width: 1024px) {
     .header {
         flex-direction: column;
         align-items: center;
+        padding: 1rem;
         gap: 0.5rem;
-    }
-
-    .nav-list {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .header-welcome {
-        margin: 0.5rem 0;
-        font-size: 1.25rem;
+        height: auto;
     }
 
     .logo-text {
         font-size: 2rem;
     }
+
+    .header-welcome {
+        font-size: 1.5rem;
+    }
+
+    .nav-list {
+        gap: 1.5rem;
+        justify-content: center;
+    }
 }
 
-@keyframes neonPulse {
-    0% {
-        text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
+/* Phones */
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1.8rem;
     }
-    100% {
-        text-shadow: 0 0 20px #2ecc71, 0 0 40px #27ae60;
+
+    .header-welcome {
+        font-size: 1.3rem;
+    }
+
+    .nav-list {
+        flex-direction: row; /* stay in one row */
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: nowrap; /* prevent wrapping */
+        overflow-x: auto; /* horizontal scroll if needed */
+        width: 100%;
+        padding: 0 0.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.6rem;
+    }
+
+    .header-welcome {
+        font-size: 1.1rem;
+    }
+
+    .nav-link,
+    .nav-icon-link {
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
     }
 }
