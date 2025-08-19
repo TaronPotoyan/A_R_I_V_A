@@ -1,4 +1,3 @@
-/* ===== HEADER BASE ===== */
 .header {
     display: flex;
     align-items: center;
@@ -22,8 +21,6 @@
     box-shadow: 0 4px 30px rgba(46, 204, 113, 0.6);
     background: linear-gradient(90deg, #121212, #0d0d0d);
 }
-
-/* ===== LOGO TEXT ===== */
 .logo-text {
     font-size: 2.2rem;
     font-weight: 900;
@@ -57,7 +54,6 @@
     }
 }
 
-/* ===== WELCOME MESSAGE ===== */
 .header-welcome {
     font-size: 1.6rem;
     font-weight: 900;
@@ -72,7 +68,6 @@
     text-align: center;
 }
 
-/* Neon Pulse Animation */
 @keyframes neonPulse {
     0% {
         text-shadow:
@@ -86,7 +81,6 @@
     }
 }
 
-/* Bounce Animation */
 @keyframes bounce {
     0%,
     100% {
@@ -97,7 +91,6 @@
     }
 }
 
-/* ===== NAVIGATION ===== */
 .nav-list {
     display: flex;
     gap: 2rem;
@@ -145,9 +138,7 @@
         0 0 20px #27ae60;
 }
 
-/* ===== RESPONSIVE ===== */
 
-/* Tablets & small laptops */
 @media (max-width: 1024px) {
     .header {
         flex-direction: column;
@@ -171,7 +162,6 @@
     }
 }
 
-/* Phones */
 @media (max-width: 768px) {
     .logo-text {
         font-size: 1.8rem;
@@ -182,18 +172,17 @@
     }
 
     .nav-list {
-        flex-direction: row; /* stay in one row */
+        flex-direction: row; 
         gap: 1rem;
         justify-content: center;
-        flex-wrap: nowrap; /* prevent wrapping */
-        overflow-x: auto; /* horizontal scroll if needed */
+        flex-wrap: nowrap; 
+        overflow-x: auto;
         width: 100%;
         padding: 0 0.5rem;
         -webkit-overflow-scrolling: touch;
     }
 }
 
-/* Extra small phones */
 @media (max-width: 480px) {
     .logo-text {
         font-size: 1.6rem;

@@ -1,0 +1,115 @@
+/* ===== LOGIN PAGE STYLES ===== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: linear-gradient(135deg, #121212, #1a1a1a);
+    padding: 2rem;
+}
+
+.login-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(46, 204, 113, 0.2);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow:
+        0 0 20px rgba(46, 204, 113, 0.3),
+        0 0 40px rgba(39, 174, 96, 0.2);
+    text-align: center;
+    animation: fadeInScale 0.5s ease forwards;
+}
+
+.login-card h2 {
+    color: #2ecc71;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
+}
+
+.login-input {
+    width: 90%;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #2ecc71;
+    background-color: #121212;
+    color: #ffffff;
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.2);
+}
+
+.login-input:focus {
+    border: 1px solid #27ae60;
+    box-shadow:
+        0 0 15px #2ecc71,
+        0 0 30px rgba(39, 174, 96, 0.4);
+    transform: scale(1.02);
+}
+
+.login-button {
+    width: 100%;
+    padding: 1rem 0;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: none;
+    border-radius: 12px;
+    color: #111;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+    transition: all 0.3s ease, transform 0.3s ease;
+}
+
+.login-button:hover {
+    background: linear-gradient(135deg, #27ae60, #1e8449);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #2ecc71;
+}
+
+.login-footer {
+    margin-top: 1.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.login-footer a {
+    color: #2ecc71;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.login-footer a:hover {
+    color: #27ae60;
+    text-decoration: underline;
+}
+
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .login-card h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .login-input {
+        font-size: 1rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .login-button {
+        font-size: 1rem;
+        padding: 0.85rem 0;
+    }
+}
