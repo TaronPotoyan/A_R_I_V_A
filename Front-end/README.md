@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# ARIVA Mobile App 🚀📱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ARIVA** is a mobile-friendly e-commerce web application for browsing and purchasing phones and accessories. Users can log in via **Google OAuth2**. The stack includes React + TypeScript for the frontend, Express + Node.js for the backend, and MongoDB for data storage.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features ✨
 
-## Expanding the ESLint configuration
+- Browse phones 📱 and accessories 🎧
+- User authentication with **Google OAuth2** 🔑
+- Add items to basket 🛒
+- Responsive design for mobile and desktop 📲💻
+- Persistent login using `localStorage` 💾
+- Modern UI with animated headers and neon effects 🌟
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
+## Tech Stack 🛠️
 
-            // Remove tseslint.configs.recommended and replace with this
-            ...tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            ...tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            ...tseslint.configs.stylisticTypeChecked,
+- **Frontend:** React ⚛️, TypeScript, React Router, Axios, React Icons, @react-oauth/google
+- **Backend:** Express, Node.js
+- **Database:** MongoDB 🍃
+- **Authentication:** Google OAuth2 🟢
+- **Styling:** CSS with animations ✨
+- **Package Management:** pnpm or npm 📦
 
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Prerequisites ✅
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+- Node.js v18+ 🟢  
+- MongoDB (local or Atlas) 🍃  
+- Google Cloud account for OAuth credentials 🌐  
 
-export default tseslint.config([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs['recommended-typescript'],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+---
+
+## Setup 🏗️
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/TaronPotoyan/A_R_I_V_A
+cd ariva-mobile-app
