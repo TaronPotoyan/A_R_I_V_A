@@ -40,4 +40,4 @@
 
 ```bash
 git clone https://github.com/TaronPotoyan/A_R_I_V_A
-cd ariva-mobile-app
+cd A_R_I_V_A
