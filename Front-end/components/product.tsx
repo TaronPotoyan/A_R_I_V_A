@@ -6,17 +6,15 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-    const storedUser = localStorage.getItem('ARIVA');
-    const [isLoggedIn] = useState(storedUser ? JSON.parse(storedUser)?.user : false);
+    const storedUser = localStorage.getItem('user');
+    const [isLoggedIn] = useState(!!storedUser);
     const [showPopup, setShowPopup] = useState(false);
 
     const handlerBuy = useCallback(() => {
         if (!isLoggedIn) {
             setShowPopup(true);
         } else {
-            // handle buy logic
             console.log('Buying product:', product.model);
-            
         }
     }, [isLoggedIn, product]);
 
@@ -33,14 +31,21 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             <h3 className="product-title">{product.model}</h3>
             <p className="product-price">{product.value} AMD</p>
-            <button className="buy-button" onClick={handlerBuy}>BUY</button>
+            <button className="buy-button" onClick={handlerBuy}>
+                BUY
+            </button>
 
             {showPopup && (
                 <div className="popup-overlay" onClick={closePopup}>
-                    <div className="popup-content" onClick={e => e.stopPropagation()}>
+                    <div
+                        className="popup-content"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <h3>⚠️ Login Required</h3>
                         <p>You need to log in to buy this product.</p>
-                        <button onClick={closePopup} className="popup-close">Close</button>
+                        <button onClick={closePopup} className="popup-close">
+                            Close
+                        </button>
                     </div>
                 </div>
             )}

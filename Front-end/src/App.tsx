@@ -4,7 +4,6 @@ import Home from '../pages/home';
 import Header from '../components/Header';
 import Login from '../pages/Login';
 
-
 export default function App() {
     return (
         <>
@@ -12,7 +11,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/registration" element={<Register />} />
-                <Route path='/login' element={<Login/>} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </>
     );
