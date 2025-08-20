@@ -1,4 +1,5 @@
 export interface IPhone {
+    _id: string | null | undefined;
     model: string;
     yearOfAnnouncement?: string;
     os: string;

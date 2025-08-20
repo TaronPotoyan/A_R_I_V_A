@@ -5,3 +5,5 @@ const route = express.Router();
 const all = new ControllerAll();
 
 route.get('/', all.GetAll);
+
+export default route

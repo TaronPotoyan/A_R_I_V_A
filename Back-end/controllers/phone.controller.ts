@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import ABS from '../interfaces/abstratc _techniq.js';
 import { IPhone } from '../interfaces/phon.js';
 import Phone from '../models/Phone.js';
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
 export default class PhonesController extends ABS {
     constructor() {
@@ -61,6 +61,7 @@ export default class PhonesController extends ABS {
         }
         return;
     }
+
     async Delete(req: Request, res: Response): Promise<void> {
         try {
             const { id: _id } = req.params;

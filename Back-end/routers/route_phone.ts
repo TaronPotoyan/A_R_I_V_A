@@ -4,17 +4,16 @@ import Middlware from '../middleware/MIdllwares.js';
 
 const phonesController = new PhonesController();
 const midllwares = new Middlware();
-const route = express.Router();
+const route_phone = express.Router();
 
-route.get('/', phonesController.Get);
+route_phone.get('/', phonesController.Get);
 
-route.get('/:id', phonesController.GetSpec);
+route_phone.get('/:id', phonesController.GetSpec);
 
-route.post('/', midllwares.IsValidKey, phonesController.Post);
+route_phone.post('/', midllwares.IsValidKey, phonesController.Post);
 
-route.delete('/:id', midllwares.IsValidKey, phonesController.Delete);
+route_phone.delete('/:id', midllwares.IsValidKey, phonesController.Delete);
 
-route.patch('/:id' , midllwares.IsValidKey,phonesController.Update);
+route_phone.patch('/:id', midllwares.IsValidKey, phonesController.Update);
 
-
-export default route;
+export default route_phone;

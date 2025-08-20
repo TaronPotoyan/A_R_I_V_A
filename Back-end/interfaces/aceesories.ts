@@ -1,5 +1,5 @@
 export interface IAccessory {
-    brand: string;
+    model: string;
     image: string;
     value: number;
     createdAt?: Date;

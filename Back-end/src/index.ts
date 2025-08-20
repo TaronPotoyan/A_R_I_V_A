@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import route_phone from '../routers/route_phone.js';
 import route_aceesories from '../routers/route_aceesories.js';
-import route_admin from '../routers/route_admin.js';
-import route from '../routers/route_phone.js';
+import route_user from '../routers/route_user.js';
+import route from '../routers/route_getall.js';
 
 dotenv.config();
 
@@ -13,7 +13,10 @@ const MONGO_URL = process.env.MONGO_URI || 'mongodb://localhost:27017/mobix';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true,
+}));
 app.use(express.json());
 
 async function ConnectToDB() {
@@ -32,5 +35,5 @@ ConnectToDB();
 
 app.use('/phones', route_phone);
 app.use('/aceesories', route_aceesories);
-app.use('/admin', route_admin);
+app.use('/user', route_user);
 app.use('/', route);
