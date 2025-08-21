@@ -11,12 +11,9 @@ dotenv.config();
 
 const MONGO_URL = process.env.MONGO_URI || 'mongodb://localhost:27017/mobix';
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
-app.use(cors({
-  origin: 'http://localhost:5173', 
-  credentials: true,
-}));
+app.use(cors());
 app.use(express.json());
 
 async function ConnectToDB() {

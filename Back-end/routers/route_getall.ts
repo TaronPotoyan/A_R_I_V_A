@@ -6,4 +6,4 @@ const all = new ControllerAll();
 
 route.get('/', all.GetAll);
 
-export default route
+export default route;

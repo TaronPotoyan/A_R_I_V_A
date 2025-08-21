@@ -1,14 +1,17 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
-    {
-        email: { type: String, required: true, unique: true },
-        password: { type: String }, 
-        googleId: { type: String }, 
-    },
-    { timestamps: true }
-);
+const BasketItemSchema = new mongoose.Schema({
+  item: { type: mongoose.Schema.Types.ObjectId, required: true, refPath: "basket.itemType" },
+  itemType: { type: String, required: true, enum: ["Phone", "Accessory"] },
+});
 
-const User = mongoose.model("User", userSchema);
+const UserSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  googleId: { type: String },
+  name: { type: String },
+  picture: { type: String },
+  basket: [BasketItemSchema],
+});
 
-export default User;
+const User = mongoose.model("User", UserSchema);
+export default User

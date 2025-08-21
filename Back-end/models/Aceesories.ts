@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const AccessorySchema = new mongoose.Schema({
+    type: { type: String, default: "Accessory" },
     brand: { type: String, required: true },
     image: { type: String },
     value: { type: Number, default: 0 },

@@ -17,4 +17,5 @@ export interface IPhone {
     length: string;
     image: string;
     value: number;
+    type : string
 }

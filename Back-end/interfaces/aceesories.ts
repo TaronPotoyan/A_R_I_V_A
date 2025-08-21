@@ -4,4 +4,6 @@ export interface IAccessory {
     value: number;
     createdAt?: Date;
     updatedAt?: Date;
+    _id: string | null | undefined;
+    type : string;
 }
