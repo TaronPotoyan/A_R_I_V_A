@@ -1,22 +1,43 @@
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { IProduct } from '../interfaces/product_card';
+import axios from 'axios';
+
+const API = import.meta.env.VITE_SERVER_API;
 
 interface ProductCardProps {
     product: IProduct;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-    const storedUser = localStorage.getItem('user');
-    const [isLoggedIn] = useState(!!storedUser);
+    const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    const isLoggedIn = !!storedUser._id;
     const [showPopup, setShowPopup] = useState(false);
+    const navigator = useNavigate();
 
-    const handlerBuy = useCallback(() => {
+    const handlerBuy = useCallback(async () => {
         if (!isLoggedIn) {
             setShowPopup(true);
-        } else {
-            console.log('Buying product:', product.model);
+            return;
         }
-    }, [isLoggedIn, product]);
+
+        try {
+            const type: 'Phone' | 'Accessory' = product.model
+                ? 'Phone'
+                : 'Accessory';
+
+            await axios.post(`${API}/user/basket/set`, {
+                userId: storedUser._id,
+                productId: product._id,
+                type,
+            });
+
+            alert('Product added to basket');
+            navigator(`/Basket`);
+        } catch (err) {
+            console.error('Failed to add product to basket', err);
+        }
+    }, [isLoggedIn, product, storedUser._id, navigator]);
 
     const closePopup = () => setShowPopup(false);
 
@@ -25,14 +46,18 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="product-image-wrapper">
                 <img
                     src={product.image}
-                    alt={product.model}
+                    alt={product.model || product.brand || 'Product Image'}
                     className="product-image"
                 />
             </div>
-            <h3 className="product-title">{product.model}</h3>
+            <h3 className="product-title">{product.model || product.brand}</h3>
             <p className="product-price">{product.value} AMD</p>
-            <button className="buy-button" onClick={handlerBuy}>
-                BUY
+            <button
+                className="buy-button"
+                style={{ marginTop: '1rem' }}
+                onClick={handlerBuy}
+            >
+                Add to Basket
             </button>
 
             {showPopup && (
@@ -43,9 +68,14 @@ export default function ProductCard({ product }: ProductCardProps) {
                     >
                         <h3>⚠️ Login Required</h3>
                         <p>You need to log in to buy this product.</p>
-                        <button onClick={closePopup} className="popup-close">
-                            Close
-                        </button>
+                        <div className="popup-buttons">
+                            <button
+                                onClick={closePopup}
+                                className="popup-close"
+                            >
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

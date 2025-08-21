@@ -6,7 +6,7 @@
     height: 100px;
     min-height: 80px;
     background: linear-gradient(90deg, #1a1a1a, #0d0d0d);
-    box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
     backdrop-filter: blur(6px);
     border-radius: 14px;
     position: sticky;
@@ -18,50 +18,78 @@
 .header.scrolled {
     height: 70px;
     padding: 0.5rem 2rem;
-    box-shadow: 0 4px 30px rgba(46, 204, 113, 0.6);
+    box-shadow: 0 4px 30px rgba(255, 105, 180, 0.6);
     background: linear-gradient(90deg, #121212, #0d0d0d);
 }
 
 .logo-text {
     font-size: 2.2rem;
     font-weight: 900;
-    background: linear-gradient(45deg, #2ecc71, #27ae60, #2ecc71);
+    background: linear-gradient(45deg, #ff69b4, #e754a1, #ff69b4);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: neonGradient 3s infinite alternate;
     cursor: pointer;
-    text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
-    transition: transform 0.4s, text-shadow 0.4s;
+    text-shadow:
+        0 0 10px #ff69b4,
+        0 0 20px #e754a1;
+    transition:
+        transform 0.4s,
+        text-shadow 0.4s;
 }
 
 .logo-text:hover {
     transform: rotate(-3deg) scale(1.08);
-    text-shadow: 0 0 20px #2ecc71, 0 0 40px #27ae60;
+    text-shadow:
+        0 0 20px #ff69b4,
+        0 0 40px #e754a1;
 }
 
 @keyframes neonGradient {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 .header-welcome {
     font-size: 1.6rem;
     font-weight: 900;
-    color: #2ecc71;
-    text-shadow: 0 0 12px #2ecc71, 0 0 24px #27ae60, 0 0 36px #2ecc71;
-    animation: neonPulse 1.5s infinite alternate, bounce 2s infinite;
+    color: #ff69b4;
+    text-shadow:
+        0 0 12px #ff69b4,
+        0 0 24px #e754a1,
+        0 0 36px #ff69b4;
+    animation:
+        neonPulse 1.5s infinite alternate,
+        bounce 2s infinite;
     text-align: center;
 }
 
 @keyframes neonPulse {
-    0% { text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60; }
-    100% { text-shadow: 0 0 20px #2ecc71, 0 0 40px #27ae60; }
+    0% {
+        text-shadow:
+            0 0 10px #ff69b4,
+            0 0 20px #e754a1;
+    }
+    100% {
+        text-shadow:
+            0 0 20px #ff69b4,
+            0 0 40px #e754a1;
+    }
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .nav-list {
@@ -94,20 +122,23 @@
     bottom: -3px;
     width: 0%;
     height: 2px;
-    background-color: #2ecc71;
+    background-color: #ff69b4;
     transition: width 0.4s;
 }
 
-.nav-link:hover::after { width: 100%; }
+.nav-link:hover::after {
+    width: 100%;
+}
 
 .nav-link:hover,
 .nav-icon-link:hover {
-    color: #2ecc71;
+    color: #ff69b4;
     transform: translateY(-2px) scale(1.05);
-    text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
+    text-shadow:
+        0 0 10px #ff69b4,
+        0 0 20px #e754a1;
 }
 
-/* Logout as plain text */
 .logout-text {
     background: none;
     border: none;
@@ -123,22 +154,40 @@
 }
 
 .logout-text:hover {
-    color: #2ecc71;
+    color: #ff69b4;
     transform: translateY(-2px) scale(1.05);
-    text-shadow: 0 0 10px #2ecc71, 0 0 20px #27ae60;
+    text-shadow:
+        0 0 10px #ff69b4,
+        0 0 20px #e754a1;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
-    .header { flex-direction: column; align-items: center; padding: 1rem; gap: 0.5rem; height: auto; }
-    .logo-text { font-size: 2rem; }
-    .header-welcome { font-size: 1.5rem; }
-    .nav-list { gap: 1.5rem; justify-content: center; }
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 0.5rem;
+        height: auto;
+    }
+    .logo-text {
+        font-size: 2rem;
+    }
+    .header-welcome {
+        font-size: 1.5rem;
+    }
+    .nav-list {
+        gap: 1.5rem;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 768px) {
-    .logo-text { font-size: 1.8rem; }
-    .header-welcome { font-size: 1.3rem; }
+    .logo-text {
+        font-size: 1.8rem;
+    }
+    .header-welcome {
+        font-size: 1.3rem;
+    }
     .nav-list {
         flex-direction: row;
         gap: 1rem;
@@ -152,7 +201,38 @@
 }
 
 @media (max-width: 480px) {
-    .logo-text { font-size: 1.6rem; }
-    .header-welcome { font-size: 1.1rem; }
-    .nav-link, .nav-icon-link, .logout-text { font-size: 1rem; padding: 0.4rem 0.6rem; }
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    .header-welcome {
+        font-size: 1.1rem;
+    }
+    .nav-link,
+    .nav-icon-link,
+    .logout-text {
+        font-size: 0.95rem;
+        padding: 0.35rem 0.5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .header {
+        padding: 0.5rem 1rem;
+        gap: 0.3rem;
+    }
+    .logo-text {
+        font-size: 1.4rem;
+    }
+    .header-welcome {
+        font-size: 1rem;
+    }
+    .nav-link,
+    .nav-icon-link,
+    .logout-text {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.45rem;
+    }
+    .nav-list {
+        gap: 0.8rem;
+    }
 }

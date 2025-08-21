@@ -40,6 +40,7 @@ export default function Login() {
                     }}
                 >
                     <GoogleLogin
+                        className={'google-login-btn'}
                         onSuccess={handleGoogleLogin}
                         onError={() => alert('Google login failed')}
                     />

@@ -9,20 +9,20 @@ html,
         BlinkMacSystemFont,
         sans-serif;
     background-color: #121212;
-    color: #e0f7e0;
+    color: #ffe0f7;
     min-height: 100vh;
     transition: background 0.3s ease;
 }
 
 a {
-    color: #2ecc71;
+    color: #ff69b4;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #27ae60;
+    color: #e754a1;
 }
 
 h1,
@@ -31,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #2ecc71;
+    color: #ff69b4;
     margin: 1rem 0;
     transition: all 0.3s ease;
 }
@@ -42,6 +42,7 @@ h6 {
     margin: 0 auto;
 }
 
+/* Spinner */
 .spinner-wrapper {
     display: flex;
     justify-content: center;
@@ -51,14 +52,14 @@ h6 {
 
 .spinner {
     border: 6px solid rgba(26, 26, 26, 0.3);
-    border-top: 6px solid #2ecc71;
+    border-top: 6px solid #ff69b4;
     border-radius: 50%;
     width: 60px;
     height: 60px;
     animation:
         spin 1s linear infinite,
         glow 2s ease-in-out infinite alternate;
-    box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
 }
 
 @keyframes spin {
@@ -72,9 +73,65 @@ h6 {
 
 @keyframes glow {
     0% {
-        box-shadow: 0 0 15px #2ecc71;
+        box-shadow: 0 0 15px #ff69b4;
     }
     100% {
-        box-shadow: 0 0 35px #27ae60;
+        box-shadow: 0 0 35px #e754a1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-size: 1rem;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+        box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .spinner {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
     }
 }
