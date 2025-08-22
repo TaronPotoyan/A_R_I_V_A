@@ -1,0 +1,187 @@
+/* Basket container */
+.basket-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Empty basket message */
+.basket-empty {
+    text-align: center;
+    margin-top: 4rem;
+    font-size: 1.6rem;
+    color: #ff69b4;
+}
+
+/* Grid layout */
+.basket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+/* Basket card */
+.basket-card {
+    background-color: #1a1a1a;
+    border-radius: 1.2rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: #ffe0f7;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    min-height: 420px;
+}
+
+.basket-card:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.35);
+}
+
+/* Image wrapper */
+.basket-image-wrapper {
+    overflow: hidden;
+    border-radius: 1rem;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212;
+    margin-bottom: 1rem;
+}
+
+.basket-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.basket-image-wrapper:hover .basket-image {
+    transform: scale(1.07);
+}
+
+/* Title and price */
+.basket-title {
+    margin: 0.6rem 0 0.3rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ff69b4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.basket-price {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    color: #ffe0f7;
+}
+
+/* Quantity display */
+.basket-quantity {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ff85c1;
+}
+
+/* Buttons */
+.basket-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.basket-button {
+    flex: 1 1 130px;
+    min-width: 130px;
+    padding: 0.55rem 1.2rem;
+    background: linear-gradient(135deg, #ff69b4, #e754a1);
+    color: #fff;
+    border: none;
+    border-radius: 0.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.basket-button:hover {
+    background: linear-gradient(135deg, #e754a1, #c1398d);
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .basket-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .basket-card {
+        min-height: auto;
+        padding: 1.2rem;
+    }
+
+    .basket-image-wrapper {
+        height: 200px;
+    }
+
+    .basket-title {
+        font-size: 1.1rem;
+    }
+
+    .basket-price {
+        font-size: 1rem;
+    }
+
+    .basket-quantity {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .basket-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .basket-image-wrapper {
+        height: 180px;
+    }
+
+    .basket-title {
+        font-size: 1rem;
+    }
+
+    .basket-price {
+        font-size: 0.95rem;
+    }
+
+    .basket-quantity {
+        font-size: 0.85rem;
+    }
+
+    .basket-button {
+        font-size: 0.85rem;
+        padding: 0.45rem 1rem;
+    }
+}
+.basket-card {
+    max-width: max-content;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: flex-start; /* or center */
+}

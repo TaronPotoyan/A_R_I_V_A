@@ -5,11 +5,11 @@ import ProductCard from '../components/product.tsx'
 
 const API = import.meta.env.VITE_SERVER_API
 
-export default function Phones() {
+export default function Accesories() {
   const [phons, setPhons] = useState<IPhone[]>([])
 
   useEffect(() => {
-    axios.get(`${API}/phones`)
+    axios.get(`${API}/aceesories`)
       .then((res) => {
         setPhons(res.data.data)
       })

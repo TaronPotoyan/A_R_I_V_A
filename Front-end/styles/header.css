@@ -28,6 +28,7 @@
     background: linear-gradient(45deg, #ff69b4, #e754a1, #ff69b4);
     background-size: 200% 200%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: neonGradient 3s infinite alternate;
     cursor: pointer;
@@ -235,4 +236,14 @@
     .nav-list {
         gap: 0.8rem;
     }
+}
+.nav-link.active,
+.nav-icon-link.active {
+    color: #ff69b4;
+    font-weight: bold;
+    border-bottom: 2px solid #ff69b4;
+}
+.nav-list li {
+  margin: 0;
+  padding: 0 0.5rem;
 }

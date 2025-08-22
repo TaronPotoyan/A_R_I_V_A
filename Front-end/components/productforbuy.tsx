@@ -1,11 +1,13 @@
-import axios from 'axios';
 import type { IProduct } from '../interfaces/product_card';
 
-const API: string = import.meta.env.VITE_SERVER_API;
-
-interface PRODUCTBUYProps {
+interface BasketProductProps {
     product: {
-        item: IProduct & { type?: 'Phone' | 'Accessory'; brand?: string };
+        item: IProduct & {
+            type?: 'Phone' | 'Accessory';
+            brand?: string;
+            image?: string;
+            value?: number;
+        };
         itemType: 'Phone' | 'Accessory';
         _id: string;
     };
@@ -14,59 +16,41 @@ interface PRODUCTBUYProps {
     onBuy?: (userId: string, productId: string) => void;
 }
 
-export default function PRODUCTBUY({ product, onRemove, onBuy, userId }: PRODUCTBUYProps) {
-    
-    const handleRemove = async (e: React.MouseEvent<HTMLButtonElement>) => {
+export default function BasketProduct({
+    product,
+    onRemove,
+    onBuy,
+    userId,
+}: BasketProductProps) {
+    const handleRemove = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        try {
-            if (onRemove) {
-                onRemove(userId, product._id);
-            }
-            await axios.post(`${API}/user/basket/remove`, {
-                userId,
-                productId: product._id,
-            });
-        } catch (err) {
-            console.error('Error removing product:', err);
-        }
+        if (onRemove) onRemove(userId, product._id);
     };
 
-    const handleBuy = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleBuy = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        try {
-            if (onBuy) {
-                onBuy(userId, product._id);
-            }
-            await axios.post(`${API}/user/basket/buy`, {
-                userId,
-                productId: product._id,
-            });
-            alert('Purchase successful ✅');
-        } catch (err) {
-            console.error('Error buying product:', err);
-            alert('Purchase failed ❌');
-        }
+        if (onBuy) onBuy(userId, product._id);
     };
 
     const item = product.item;
     const name = item.model || item.brand || 'Unknown Product';
 
     return (
-        <div className="product-card">
-            <div className="product-image-wrapper">
+        <div className="basket-card">
+            <div className="basket-image-wrapper">
                 <img
                     src={item.image || ''}
                     alt={name}
-                    className="product-image"
+                    className="basket-image"
                 />
             </div>
-            <h3 className="product-title">{name}</h3>
-            <p className="product-price">{item.value ?? 0} AMD</p>
-            <div className="product-buttons">
-                <button className="buy-button" onClick={handleBuy}>
+            <h3 className="basket-title">{name}</h3>
+            <p className="basket-price">{item.value ?? 0} AMD</p>
+            <div className="basket-buttons">
+                <button className="basket-button" onClick={handleBuy}>
                     BUY
                 </button>
-                <button className="buy-button" onClick={handleRemove}>
+                <button className="basket-button" onClick={handleRemove}>
                     Remove
                 </button>
             </div>

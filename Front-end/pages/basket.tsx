@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { IProduct } from '../interfaces/product_card';
-import PRODUCTBUY from '../components/productforbuy';
+import BasketProduct from '../components/productforbuy';
 import axios from 'axios';
 
 const API = import.meta.env.VITE_SERVER_API;
@@ -11,67 +10,67 @@ interface BasketItem {
         _id: string;
         model?: string;
         brand?: string;
-        // other product properties
+        image?: string;
+        value?: number;
+        type: 'Phone' | 'Accessory';
     };
-    itemType: string;
+    itemType: 'Phone' | 'Accessory';
     quantity: number;
 }
 
 export default function Basket() {
     const [products, setProducts] = useState<BasketItem[]>([]);
     const [loading, setLoading] = useState(true);
-    const [userId, setUserId] = useState<string>("");
+    const [userId, setUserId] = useState<string>('');
 
-   useEffect(() => {
-    const fetchBasket = async () => {
+    useEffect(() => {
+        const fetchBasket = async () => {
+            try {
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                if (!user._id) return;
+                setUserId(user._id);
+
+                const res = await axios.post(`${API}/user/basket/get`, {
+                    userId: user._id,
+                });
+                const basket = Array.isArray(res.data?.basket)
+                    ? res.data.basket.map((item: any) => ({
+                          ...item,
+                          item: {
+                              ...item.item,
+                              type: item.item.type || item.itemType,
+                          },
+                      }))
+                    : [];
+                setProducts(basket);
+                setProducts(basket);
+            } catch (err) {
+                console.error('Error fetching basket:', err);
+                setProducts([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBasket();
+    }, []);
+
+    const handleRemove = async (userId: string, productId: string) => {
         try {
-            const user = JSON.parse(localStorage.getItem('user') || '{}');
-            if (!user._id) return;
-            setUserId(user._id);
-
-            const res = await axios.post(`${API}/user/basket/get`, { userId: user._id });
-
-            const basket = Array.isArray(res.data?.basket) ? res.data.basket : [];
-
-            const items = basket.map((item: any) => ({
-                ...item,
-                name: item.item?.model || item.item?.brand || 'Unknown Product',
-            }));
-
-            setProducts(items);
+            setProducts((prev) => prev.filter((p) => p.item._id !== productId));
+            const { data } = await axios.post(`${API}/user/basket/remove`, {
+                userId,
+                productId,
+            });
+            setProducts(data.basket || []);
         } catch (err) {
-            console.error('Error fetching basket:', err);
-            setProducts([]); 
-        } finally {
-            setLoading(false);
+            console.error('Error removing product:', err);
         }
     };
-
-    fetchBasket();
-}, []);
-
-const handleRemove = async (userId: string, productId: string) => {
-    try {
-        setProducts((prev) => prev.filter((p) => p.item._id !== productId));
-        console.log(userId+ '\n' + productId)
-         const {data} =  await axios.post(`${API}/user/basket/remove`, { 
-            userId,
-            productId,
-        });
-        setProducts(data.basket)
-        // console.log(res)
-    } catch (err) {
-        console.error('Error removing product:', err);
-        const res = await axios.post(`${API}/user/basket/get`, { userId });
-        setProducts(res.data.basket);
-    }
-};
 
     const handleBuy = async (userId: string, productId: string) => {
         try {
             await axios.post(`${API}/user/basket/buy`, { userId, productId });
-
-            // Filter by the product's ID (item._id) not the basket item's ID
             setProducts((prev) => prev.filter((p) => p.item._id !== productId));
             alert('Purchase successful ✅');
         } catch (err) {
@@ -80,18 +79,30 @@ const handleRemove = async (userId: string, productId: string) => {
         }
     };
 
-    if (loading) return <h3>Loading...</h3>;
+    if (loading) {
+        return (
+            <div className="basket-spinner-wrapper">
+                <div className="basket-spinner"></div>
+            </div>
+        );
+    }
 
     return (
-        <div className="home-container">
+        <div className="basket-container">
             {products?.length === 0 ? (
-                <h3 className="no-products">Empty Basket 🛒</h3>
+                <h3 className="basket-empty">Empty Basket 🛒</h3>
             ) : (
-                <div className="product-grid">
+                <div className="basket-grid">
                     {products.map((product) => (
-                        <PRODUCTBUY
-                            key={product._id} 
-                            product={product}
+                        <BasketProduct
+                            key={product._id}
+                            product={{
+                                ...product,
+                                item: {
+                                    ...product.item,
+                                    model: product.item.model ?? '',
+                                },
+                            }}
                             userId={userId}
                             onRemove={handleRemove}
                             onBuy={handleBuy}

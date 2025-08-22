@@ -33,7 +33,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             });
 
             alert('Product added to basket');
-            navigator(`/Basket`);
         } catch (err) {
             console.error('Failed to add product to basket', err);
         }
@@ -52,11 +51,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             <h3 className="product-title">{product.model || product.brand}</h3>
             <p className="product-price">{product.value} AMD</p>
-            <button
-                className="buy-button"
-                style={{ marginTop: '1rem' }}
-                onClick={handlerBuy}
-            >
+            <button className="buy-button" onClick={handlerBuy}>
                 Add to Basket
             </button>
 

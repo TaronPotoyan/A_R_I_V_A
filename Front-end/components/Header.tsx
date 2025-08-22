@@ -1,20 +1,30 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser, FaShoppingBasket } from 'react-icons/fa';
 
 export default function Header() {
     const navigate = useNavigate();
-    const [logOut, setLogout] = useState(false);
+    const { pathname } = useLocation();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
-        if (storedUser) setLogout(true);
-    });
+        setIsLoggedIn(!!storedUser);
+    }, []);
 
     const handleLogout = () => {
         localStorage.removeItem('user');
-        setLogout(false);
+        setIsLoggedIn(false);
         navigate('/');
+    };
+
+    const getNavLinkClass = (path: string) => {
+        // Highlight link if pathname starts with the path
+        return `nav-link ${pathname.startsWith(path) ? 'active' : ''}`;
+    };
+
+    const getIconLinkClass = (path: string) => {
+        return `nav-icon-link ${pathname.startsWith(path) ? 'active' : ''}`;
     };
 
     return (
@@ -22,42 +32,44 @@ export default function Header() {
             <Link to="/" className="logo-link">
                 <div className="logo-text">A R I V A</div>
             </Link>
+
             <div className="header-welcome">
                 🎉 WELCOME TO THE COOLEST SHOP EVER!!! 🛒🩷
             </div>
+
             <nav>
                 <ul className="nav-list">
                     <li>
-                        <Link to="/phons" className="nav-link">
+                        <Link to="/phones" className={getNavLinkClass('/phones')}>
                             Phons
                         </Link>
                     </li>
                     <li>
-                        <Link to="/accesores" className="nav-link">
+                        <Link to="/aceesories" className={getNavLinkClass('/accesores')}>
                             Accesores
                         </Link>
                     </li>
                     <li>
-                        <Link to="/about-us" className="nav-link">
+                        <Link to="/AboutUs" className={getNavLinkClass('/AboutUs')}>
                             About Us
                         </Link>
                     </li>
                     <li>
-                        {logOut ? (
+                        {isLoggedIn ? (
                             <button
                                 onClick={handleLogout}
-                                className="logout-text"
+                                className={getNavLinkClass('/logout') + ' logout-text'}
                             >
                                 Log Out
                             </button>
                         ) : (
-                            <Link to="/login" className="nav-icon-link">
+                            <Link to="/login" className={getIconLinkClass('/login')}>
                                 <FaUser />
                             </Link>
                         )}
                     </li>
                     <li>
-                        <Link to="/Basket" className="nav-icon-link">
+                        <Link to="/basket" className={getIconLinkClass('/basket')}>
                             <FaShoppingBasket />
                         </Link>
                     </li>
