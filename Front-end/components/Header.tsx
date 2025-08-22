@@ -10,7 +10,7 @@ export default function Header() {
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         setIsLoggedIn(!!storedUser);
-    }, []);
+    }, [pathname,isLoggedIn]);
 
     const handleLogout = () => {
         localStorage.removeItem('user');
@@ -19,7 +19,6 @@ export default function Header() {
     };
 
     const getNavLinkClass = (path: string) => {
-        // Highlight link if pathname starts with the path
         return `nav-link ${pathname.startsWith(path) ? 'active' : ''}`;
     };
 
@@ -45,7 +44,7 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/aceesories" className={getNavLinkClass('/accesores')}>
+                        <Link to="/aceesories" className={getNavLinkClass('/aceesories')}>
                             Accesores
                         </Link>
                     </li>

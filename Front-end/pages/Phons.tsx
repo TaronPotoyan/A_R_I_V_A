@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { IPhone } from '../../Back-end/interfaces/phon.ts'
+import type { IPhone } from '../../Back-end/interfaces/phon.ts'
 import ProductCard from '../components/product.tsx'
 
 const API = import.meta.env.VITE_SERVER_API
@@ -22,7 +22,7 @@ export default function Phones() {
       <><div className="container"> 
          <div className="product-grid">
             {phons.map((product) => (
-                <ProductCard product={product} key={product._id} />
+                <ProductCard product={product} key={product._id} brand={''} />
                 ))}
          </div>
       </div>
