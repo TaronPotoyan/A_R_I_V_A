@@ -5,5 +5,5 @@ export interface IAccessory {
     createdAt?: Date;
     updatedAt?: Date;
     _id: string | null | undefined;
-    type : string;
+    type: string;
 }

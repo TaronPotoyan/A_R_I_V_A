@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 const PhoneSchema = new mongoose.Schema(
     {
-        type: { type: String, default: "Phone" },
-        image: { type: String, required: true }, 
+        type: { type: String, default: 'Phone' },
+        image: { type: String, required: true },
         model: { type: String, required: true },
         yearOfAnnouncement: { type: String },
         os: { type: String, required: true },

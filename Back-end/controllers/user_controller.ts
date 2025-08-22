@@ -59,34 +59,73 @@ class ControllerUser {
         }
     }
 
-async SetBasket(req: Request, res: Response) {
-  try {
-    const { userId, productId, type } = req.body as {
-      userId: string;
-      productId: string;
-      type: 'Phone' | 'Accessory';
-    };
+    async SetBasket(req: Request, res: Response) {
+        try {
+            const { userId, productId, type } = req.body as {
+                userId: string;
+                productId: string;
+                type: 'Phone' | 'Accessory';
+            };
 
-    if (!userId || !productId || !type)
-      return res.status(400).json({ message: 'userId, productId and type required' });
+            if (!userId || !productId || !type)
+                return res.status(400).json({ message: 'userId, productId and type required' });
 
-    const user = await User.findById(userId);
-    if (!user) return res.status(404).json({ message: 'User not found' });
+            const user = await User.findById(userId);
+            if (!user) return res.status(404).json({ message: 'User not found' });
 
-    user.basket.push({ item: productId, itemType: type });
-    console.log(user.basket);
-    
-    await user.save();
+            user.basket.push({ item: productId, itemType: type });
 
-    await user.populate('basket.item');
+            await user.save();
+            await user.populate('basket.item');
 
-    res.json({ message: 'Product added to basket', basket: user.basket });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ message: 'Failed to set basket', error: e });
-  }
-}
+            res.json({ message: 'Product added to basket', basket: user.basket });
+        } catch (e) {
+            console.error(e);
+            res.status(500).json({ message: 'Failed to set basket', error: e });
+        }
+    }
 
+    async RemoveBasket(req: Request, res: Response) {
+        try {
+            const { userId, productId } = req.body as { userId: string; productId: string };
+            if (!userId || !productId) {
+                return res.status(400).json({ message: 'userId and productId required' });
+            }
+
+            const user = await User.findById(userId).populate('basket.item');
+            if (!user) return res.status(404).json({ message: 'User not found' });
+
+            const basketItem = user.basket.find((b: any) => {
+                console.log(b);
+                const itemId = b._id;
+                return itemId.toString() === productId;
+            });
+            if (!basketItem) {
+                console.log(basketItem);
+                return res.status(404).json({ message: 'Product not in basket' });
+            }
+
+            if (basketItem.quantity > 1) {
+                basketItem.quantity -= 1;
+            } else {
+                user.basket.pull({ _id: basketItem._id });
+            }
+
+            await user.save();
+            await user.populate('basket.item');
+
+            res.json({
+                message: 'Product removed from basket',
+                basket: user.basket,
+            });
+        } catch (e) {
+            console.error(e);
+            res.status(500).json({
+                message: 'Failed to remove from basket',
+                error: e,
+            });
+        }
+    }
 }
 
 export default new ControllerUser();

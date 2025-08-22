@@ -1,4 +1,7 @@
+import axios from 'axios';
 import type { IProduct } from '../interfaces/product_card';
+
+const API: string = import.meta.env.VITE_SERVER_API;
 
 interface PRODUCTBUYProps {
     product: {
@@ -6,15 +9,43 @@ interface PRODUCTBUYProps {
         itemType: 'Phone' | 'Accessory';
         _id: string;
     };
+    userId: string;
+    onRemove?: (userId: string, productId: string) => void;
+    onBuy?: (userId: string, productId: string) => void;
 }
 
-export default function PRODUCTBUY({ product }: PRODUCTBUYProps) {
-    const handleRemove = () => {
-        // TODO: Implement remove logic
+export default function PRODUCTBUY({ product, onRemove, onBuy, userId }: PRODUCTBUYProps) {
+    
+    const handleRemove = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        try {
+            if (onRemove) {
+                onRemove(userId, product._id);
+            }
+            await axios.post(`${API}/user/basket/remove`, {
+                userId,
+                productId: product._id,
+            });
+        } catch (err) {
+            console.error('Error removing product:', err);
+        }
     };
 
-    const handleBuy = () => {
-        // TODO: Implement buy logic
+    const handleBuy = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        try {
+            if (onBuy) {
+                onBuy(userId, product._id);
+            }
+            await axios.post(`${API}/user/basket/buy`, {
+                userId,
+                productId: product._id,
+            });
+            alert('Purchase successful ✅');
+        } catch (err) {
+            console.error('Error buying product:', err);
+            alert('Purchase failed ❌');
+        }
     };
 
     const item = product.item;
