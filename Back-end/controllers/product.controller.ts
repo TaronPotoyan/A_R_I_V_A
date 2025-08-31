@@ -5,7 +5,7 @@ import { IPhone } from '../interfaces/phon.js';
 import { IAccessory } from '../interfaces/aceesories.js';
 import Accessory from '../models/Aceesories.js';
 
-export default class ControllerAll extends ABSProduct {
+class ControllerAll extends ABSProduct {
     constructor() {
         super();
     }
@@ -25,3 +25,4 @@ export default class ControllerAll extends ABSProduct {
         }
     }
 }
+export default new ControllerAll();

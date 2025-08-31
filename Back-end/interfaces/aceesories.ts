@@ -6,4 +6,5 @@ export interface IAccessory {
     updatedAt?: Date;
     _id: string | null | undefined;
     type: string;
+    brand: string;
 }

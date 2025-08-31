@@ -1,0 +1,245 @@
+/* About Us Page Styles */
+.about-us-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    font-family:
+        'Segoe UI',
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+    color: #e754a1;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #121212, #1a1a1a);
+}
+
+.about-us-page h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ff69b4;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    font-weight: 900;
+}
+
+.about-us-page h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ff69b4;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+    font-weight: 700;
+}
+
+.about-us-page p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    color: #ffe0f7;
+    text-shadow: 0 0 8px rgba(255, 224, 247, 0.3);
+}
+
+.about-us-page ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-us-page li {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #ffe0f7;
+    text-shadow: 0 0 6px rgba(255, 224, 247, 0.3);
+}
+
+.about-us-page strong {
+    color: #ff69b4;
+    font-weight: 700;
+}
+
+/* Fade-in animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-delay-0 {
+    animation-delay: 0s;
+}
+.fade-delay-1 {
+    animation-delay: 0.3s;
+}
+.fade-delay-2 {
+    animation-delay: 0.6s;
+}
+.fade-delay-3 {
+    animation-delay: 0.9s;
+}
+.fade-delay-4 {
+    animation-delay: 1.2s;
+}
+.fade-delay-5 {
+    animation-delay: 1.5s;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .about-us-page {
+        padding: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .about-us-page h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-us-page h2 {
+        font-size: 1.8rem;
+    }
+
+    .about-us-page p {
+        font-size: 1.3rem;
+        max-width: 700px;
+    }
+
+    .about-us-page li {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us-page {
+        padding: 1rem;
+        font-size: 1rem;
+        min-height: 90vh;
+    }
+
+    .about-us-page h1 {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .about-us-page h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .about-us-page p {
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-us-page li {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us-page {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        min-height: 85vh;
+    }
+
+    .about-us-page h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-us-page h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-us-page p {
+        font-size: 1rem;
+        max-width: 100%;
+        margin-bottom: 1.25rem;
+        padding: 0 0.5rem;
+    }
+
+    .about-us-page li {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .about-us-page {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        min-height: 80vh;
+    }
+
+    .about-us-page h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .about-us-page h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .about-us-page p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        padding: 0 0.25rem;
+    }
+
+    .about-us-page li {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .about-us-page {
+        padding: 0.375rem;
+        font-size: 0.8rem;
+        min-height: 75vh;
+    }
+
+    .about-us-page h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .about-us-page h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .about-us-page p {
+        font-size: 0.85rem;
+        margin-bottom: 0.875rem;
+        padding: 0 0.2rem;
+    }
+
+    .about-us-page li {
+        font-size: 0.8rem;
+        margin-bottom: 0.2rem;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}

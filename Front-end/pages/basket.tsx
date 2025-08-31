@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import BasketProduct from '../components/productforbuy';
 import axios from 'axios';
+import React from 'react';
 
 const API = import.meta.env.VITE_SERVER_API;
 
@@ -42,7 +43,6 @@ export default function Basket() {
                           },
                       }))
                     : [];
-                setProducts(basket);
                 setProducts(basket);
             } catch (err) {
                 console.error('Error fetching basket:', err);
@@ -97,15 +97,23 @@ export default function Basket() {
                         <BasketProduct
                             key={product._id}
                             product={{
-                                ...product,
+                                _id: product._id,
+                                itemType: product.itemType,
                                 item: {
                                     ...product.item,
                                     model: product.item.model ?? '',
+                                    image: product.item.image ?? '',
+                                    brand: product.item.brand ?? '',
+                                    value: product.item.value ?? 0,
                                 },
                             }}
                             userId={userId}
-                            onRemove={handleRemove}
-                            onBuy={handleBuy}
+                            onRemove={(uid, pid) => {
+                                void handleRemove(uid, pid);
+                            }}
+                            onBuy={(uid, pid) => {
+                                void handleBuy(uid, pid);
+                            }}
                         />
                     ))}
                 </div>

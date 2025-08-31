@@ -1,27 +1,26 @@
-/* Basket container */
 .basket-container {
-    padding: 2rem;
+    padding: 1rem;
     max-width: 1400px;
     margin: 0 auto;
+    min-height: calc(100vh - 120px);
 }
 
-/* Empty basket message */
 .basket-empty {
     text-align: center;
     margin-top: 4rem;
     font-size: 1.6rem;
     color: #ff69b4;
+    padding: 2rem;
 }
 
-/* Grid layout */
 .basket-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2.5rem;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 0.5rem;
 }
 
-/* Basket card */
 .basket-card {
     background-color: #1a1a1a;
     border-radius: 1.2rem;
@@ -37,6 +36,7 @@
     justify-content: space-between;
     cursor: pointer;
     min-height: 420px;
+    max-width: 100%;
 }
 
 .basket-card:hover {
@@ -105,7 +105,8 @@
 .basket-button {
     flex: 1 1 130px;
     min-width: 130px;
-    padding: 0.55rem 1.2rem;
+    min-height: 44px; /* Better touch target */
+    padding: 0.75rem 1.2rem;
     background: linear-gradient(135deg, #ff69b4, #e754a1);
     color: #fff;
     border: none;
@@ -113,6 +114,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 0.95rem;
 }
 
 .basket-button:hover {
@@ -120,20 +122,72 @@
     transform: scale(1.05);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+.basket-button:active {
+    transform: scale(0.98);
+}
+
+/* Loading spinner */
+.basket-spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.basket-spinner {
+    border: 6px solid rgba(26, 26, 26, 0.3);
+    border-top: 6px solid #ff69b4;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .basket-container {
+        padding: 0.75rem;
+    }
+
     .basket-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.25rem;
     }
 
     .basket-card {
-        min-height: auto;
-        padding: 1.2rem;
+        min-height: 400px;
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-container {
+        padding: 0.5rem;
+    }
+
+    .basket-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        padding: 0 0.25rem;
+    }
+
+    .basket-card {
+        min-height: 380px;
+        padding: 1rem;
     }
 
     .basket-image-wrapper {
-        height: 200px;
+        height: 180px;
     }
 
     .basket-title {
@@ -147,17 +201,32 @@
     .basket-quantity {
         font-size: 0.9rem;
     }
+
+    .basket-button {
+        min-width: 120px;
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
+    .basket-container {
+        padding: 0.25rem;
+    }
+
     .basket-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
-        padding: 0 0.5rem;
+        padding: 0;
+    }
+
+    .basket-card {
+        min-height: 360px;
+        padding: 0.875rem;
     }
 
     .basket-image-wrapper {
-        height: 180px;
+        height: 160px;
     }
 
     .basket-title {
@@ -172,16 +241,49 @@
         font-size: 0.85rem;
     }
 
+    .basket-buttons {
+        gap: 0.75rem;
+    }
+
     .basket-button {
+        min-width: 110px;
+        padding: 0.6rem 0.875rem;
         font-size: 0.85rem;
-        padding: 0.45rem 1rem;
+        min-height: 40px;
+    }
+
+    .basket-empty {
+        font-size: 1.3rem;
+        margin-top: 2rem;
     }
 }
-.basket-card {
-    max-width: max-content;
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    justify-content: flex-start; /* or center */
+
+@media (max-width: 375px) {
+    .basket-card {
+        min-height: 340px;
+        padding: 0.75rem;
+    }
+
+    .basket-image-wrapper {
+        height: 140px;
+    }
+
+    .basket-title {
+        font-size: 0.95rem;
+    }
+
+    .basket-price {
+        font-size: 0.9rem;
+    }
+
+    .basket-button {
+        min-width: 100px;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.8rem;
+        min-height: 38px;
+    }
+
+    .basket-buttons {
+        gap: 0.5rem;
+    }
 }

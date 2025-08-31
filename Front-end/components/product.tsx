@@ -7,8 +7,7 @@ const API = import.meta.env.VITE_SERVER_API;
 
 interface ProductCardProps {
     product: IProduct;
-    brand : string;
-
+    brand: string;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {

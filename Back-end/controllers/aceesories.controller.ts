@@ -57,8 +57,6 @@ class ControllerAccessory extends ABS {
     }
 
     async Delete(req: Request, res: Response): Promise<void> {
-        console.log('Works');
-
         try {
             const { id: _id } = req.params;
             const accesor: IAccessory | null = await Accessory.findById(_id);
@@ -104,4 +102,4 @@ class ControllerAccessory extends ABS {
     }
 }
 
-export default ControllerAccessory;
+export default new ControllerAccessory();

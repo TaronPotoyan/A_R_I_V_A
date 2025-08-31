@@ -4,7 +4,7 @@ import { IPhone } from '../interfaces/phon.js';
 import Phone from '../models/Phone.js';
 import mongoose from 'mongoose';
 
-export default class PhonesController extends ABS {
+class PhonesController extends ABS {
     constructor() {
         super();
     }
@@ -107,3 +107,4 @@ export default class PhonesController extends ABS {
         }
     }
 }
+export default new PhonesController();

@@ -52,7 +52,11 @@ export default function Home() {
             ) : (
                 <div className="product-grid">
                     {products.map((product) => (
-                        <ProductCard product={product} key={product._id} brand={''} />
+                        <ProductCard
+                            product={product}
+                            key={product._id}
+                            brand={''}
+                        />
                     ))}
                 </div>
             )}

@@ -12,6 +12,29 @@ html,
     color: #ffe0f7;
     min-height: 100vh;
     transition: background 0.3s ease;
+    /* Mobile optimizations */
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Prevent horizontal scroll on mobile */
+* {
+    box-sizing: border-box;
+}
+
+/* Improve touch targets */
+button,
+input,
+select,
+textarea {
+    touch-action: manipulation;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
 a {
@@ -79,61 +102,6 @@ h6 {
     }
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.3rem;
-    }
-
-    h3 {
-        font-size: 1.2rem;
-    }
-
-    h4,
-    h5,
-    h6 {
-        font-size: 1rem;
-    }
-
-    .spinner {
-        width: 40px;
-        height: 40px;
-        border-width: 4px;
-        box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0.5rem;
-    }
-
-    h1 {
-        font-size: 1.2rem;
-    }
-
-    h2 {
-        font-size: 1.1rem;
-    }
-
-    h3 {
-        font-size: 1rem;
-    }
-
-    .spinner {
-        width: 30px;
-        height: 30px;
-        border-width: 3px;
-        box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
-    }
-}
 .product-card {
     background-color: #1e1e1e;
     border-radius: 1rem;
@@ -192,11 +160,19 @@ h6 {
     transition:
         background 0.3s,
         transform 0.3s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .buy-button:hover {
     background-color: #e754a1;
     transform: scale(1.05);
+}
+
+.buy-button:active {
+    transform: scale(0.98);
 }
 
 .popup-overlay {
@@ -219,6 +195,8 @@ h6 {
     border-radius: 1rem;
     text-align: center;
     box-shadow: 0 8px 30px rgba(255, 105, 180, 0.5);
+    max-width: 90%;
+    width: 400px;
 }
 
 .popup-close {
@@ -229,8 +207,183 @@ h6 {
     border-radius: 0.5rem;
     cursor: pointer;
     margin-top: 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .popup-close:hover {
     background-color: #e754a1;
+}
+
+.popup-close:active {
+    transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-size: 1.2rem;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border-width: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-size: 1rem;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+        box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+    }
+
+    .popup-content {
+        padding: 1.5rem;
+        width: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .spinner {
+        width: 35px;
+        height: 35px;
+        border-width: 3px;
+        box-shadow: 0 0 12px rgba(255, 105, 180, 0.2);
+    }
+
+    .popup-content {
+        padding: 1.25rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .spinner {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+    }
+
+    .popup-content {
+        padding: 1rem;
+        width: 95%;
+    }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 320px) {
+    .container {
+        padding: 0.375rem;
+    }
+
+    .popup-content {
+        padding: 0.875rem;
+        width: 98%;
+    }
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select,
+    textarea,
+    input {
+        font-size: 16px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .buy-button,
+    .popup-close {
+        border: 2px solid #fff;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

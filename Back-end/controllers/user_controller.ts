@@ -20,12 +20,14 @@ class ControllerUser {
             });
 
             const payload = ticket.getPayload();
+
             if (!payload) {
                 res.status(401).json({ message: 'Invalid Google token' });
                 return;
             }
 
             let user = await User.findOne({ email: payload.email });
+            
             if (!user) {
                 user = new User({
                     email: payload.email,
