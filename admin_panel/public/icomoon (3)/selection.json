@@ -1,0 +1,63 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M940.075 903.68l-352.555-884.096h-251.776l44.757 111.915-302.165 772.181c-11.179 39.168-44.757 44.8-78.336 50.389v50.347h290.987v-50.347c-78.336-5.589-123.136-16.811-89.557-100.736 5.589-5.589 27.989-67.157 55.936-145.493h358.101l50.347 128.683c5.589 22.4 11.179 39.168 11.179 55.936 0 44.757-39.168 61.568-111.915 61.568v50.347h458.923v-50.347c-39.168-5.547-72.747-16.768-83.925-50.347zM290.987 612.736c55.936-139.904 117.504-302.165 139.904-363.733l145.493 363.733z"
+        ],
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "academia"
+        ],
+        "grid": 0
+      },
+      "attrs": [],
+      "properties": {
+        "id": 6,
+        "order": 18,
+        "prevSize": 32,
+        "name": "academia"
+      },
+      "setIdx": 1,
+      "setId": 2,
+      "iconIdx": 5
+    }
+  ],
+  "height": 1024,
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": false,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon",
+      "name": "icomoon",
+      "height": 32,
+      "columns": 16,
+      "margin": 16
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}

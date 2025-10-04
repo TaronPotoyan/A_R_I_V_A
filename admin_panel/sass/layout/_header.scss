@@ -1,0 +1,108 @@
+.header {
+  background-color: $primary-dark;
+  color: $card;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  &__hero_section {
+    h1.heading-primary {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin: 0;
+      color: $card;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+
+  &__navigation {
+    ul.header__navigation-list {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+
+      li.header__navigation-list__iitem {
+        a {
+          color: $card;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 0.5rem 1rem;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: $primary-light;
+            color: $card;
+          }
+
+          &:active {
+            background-color: $primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ========================
+// MOBILE STYLES
+// ========================
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__hero_section {
+      margin-bottom: 1rem;
+
+      h1.heading-primary {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__navigation {
+      width: 100%;
+      margin-top: 1rem;
+
+      ul.header__navigation-list {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        width: 100%;
+
+        li.header__navigation-list__iitem {
+          width: auto; 
+          text-align: center;
+
+          a {
+            display: inline-block;
+            width: auto;
+            padding: 0.5rem 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}

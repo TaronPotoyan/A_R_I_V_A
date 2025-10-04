@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 62.5%;
+    background-color: $bg-main;
+    color: $text-primary;
+    height: 100vh;
+}
+.heading-primary {
+    color: $bg;
+    font-weight: 300;
+}
