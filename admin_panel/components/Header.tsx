@@ -8,7 +8,7 @@ export default function Header () {
                 <div className="container">
                    <div className="header__hero_section">
                         <h1 className="heading-primary">
-                            Welcom do Admin Panel
+                            Welcom to Admin Panel
                         </h1>
                     </div> 
 

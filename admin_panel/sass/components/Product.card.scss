@@ -13,7 +13,7 @@
   }
 
   &__img {
-    width: 100%;
+    width: 292px;
     height: 180px;
     object-fit: cover;
     display: block;
@@ -42,3 +42,12 @@
     gap: 0.5rem;
   }
 }
+
+.phone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  grid-auto-flow: row;
+}
+
