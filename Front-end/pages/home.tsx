@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import type { IPhone } from '../../Back-end/interfaces/phon';
 import axios from 'axios';
 import ProductCard from '../components/product';
+import React from 'react';
 
 const API = import.meta.env.VITE_SERVER_API;
-
 export default function Home() {
     const [products, setProducts] = useState<IPhone[]>([]);
     const [loading, setLoading] = useState(true);

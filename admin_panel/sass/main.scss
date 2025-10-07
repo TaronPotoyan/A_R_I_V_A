@@ -5,4 +5,7 @@
 @import './layout/header';
 
 @import './components/_button';
-@import './components/Product.card.scss'
+@import './components/Product.card.scss';
+@import './components/Error-msg';
+
+@import './pages/product.scss';

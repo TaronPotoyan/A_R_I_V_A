@@ -27,7 +27,7 @@ class ControllerUser {
             }
 
             let user = await User.findOne({ email: payload.email });
-            
+
             if (!user) {
                 user = new User({
                     email: payload.email,

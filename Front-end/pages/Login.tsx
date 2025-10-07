@@ -1,8 +1,9 @@
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API = import.meta.env.VITE_SERVER_API;
+const API = (import.meta as any).env.VITE_SERVER_API;
 
 export default function Login() {
     const navigate = useNavigate();

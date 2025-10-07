@@ -1,18 +1,18 @@
-import  { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import Header from '../components/Header';
-
+import Product from '../pages/Product';
 
 const Home = lazy(() => import('../pages/Home'));
-
 
 const App = () => {
   return (
     <>
-      <Header/>
+      <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<Product />} />
         </Routes>
       </Suspense>
     </>

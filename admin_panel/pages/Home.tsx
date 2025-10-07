@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Card from '../components/product_card';
 import type { IPhone } from '../interface/Iphone';
 
-const API: string =  import.meta.env.VITE_API;
+const API: string = import.meta.env.VITE_API;
 
 const PhoneApi = API + '/phones';
 
@@ -13,13 +13,12 @@ export default function Home() {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response : any = await axios.get<IPhone[]>(PhoneApi);
+        const response: any = await axios.get<IPhone[]>(PhoneApi);
         console.log(response.data.data);
 
-        const phon : IPhone[] = response.data?.data ?? [];
-       
-        setPhones(phon);
+        const phon: IPhone[] = response.data?.data ?? [];
 
+        setPhones(phon);
       } catch (e) {
         console.error(`Error fetching phones: ${e}`);
       }
@@ -27,7 +26,6 @@ export default function Home() {
 
     fetchPhones();
   }, []);
-
 
   return (
     <div className="phone-grid">

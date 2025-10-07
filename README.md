@@ -28,9 +28,9 @@
 
 ## Prerequisites ✅
 
-- Node.js v18+ 🟢  
-- MongoDB (local or Atlas) 🍃  
-- Google Cloud account for OAuth credentials 🌐  
+- Node.js v18+ 🟢
+- MongoDB (local or Atlas) 🍃
+- Google Cloud account for OAuth credentials 🌐
 
 ---
 
@@ -41,3 +41,4 @@
 ```bash
 git clone https://github.com/TaronPotoyan/A_R_I_V_A
 cd A_R_I_V_A
+```

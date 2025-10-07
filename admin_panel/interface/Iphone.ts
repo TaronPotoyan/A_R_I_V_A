@@ -1,24 +1,24 @@
-import type { Key } from "react";
+import type { Key } from 'react';
 
 export interface IPhone {
-    id: Key | null | undefined;
-    _id: string | null | undefined;
-    model: string;
-    yearOfAnnouncement?: string;
-    os: string;
-    screenType?: string;
-    screenResolution?: string;
-    frontCamera: string;
-    mainCamera: string;
-    ram: string;
-    storage: string;
-    chargingPortType: string;
-    weight?: string;
-    shortDescription?: string;
-    createdAt?: Date;
-    updatedAt?: Date;
-    length: string;
-    image: string;
-    value: number;
-    type: string;
+  id: Key | null | undefined;
+  _id: string | null | undefined;
+  model: string;
+  yearOfAnnouncement?: string;
+  os: string;
+  screenType?: string;
+  screenResolution?: string;
+  frontCamera: string;
+  mainCamera: string;
+  ram: string;
+  storage: string;
+  chargingPortType: string;
+  weight?: string;
+  shortDescription?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  length: string;
+  image: string;
+  value: number;
+  type: string;
 }

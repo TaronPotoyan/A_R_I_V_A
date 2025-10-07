@@ -7,16 +7,15 @@ class Middlwares {
     constructor() {}
     async IsValidKey(req: Request, res: Response, next: NextFunction) {
         try {
-            let KEY : string  = req.body.KEY;
+            let KEY: string = req.body.KEY;
             KEY = KEY.trim();
 
             console.log(Middlwares.KEY);
             if (Middlwares.KEY !== KEY) {
-                console.log(KEY)
+                console.log(KEY);
                 return res.status(401).json({ message: 'Invalid Request' });
             }
             next();
-
         } catch (e) {
             console.log(`Error ${e}`);
             res.status(500).json({ message: 'Server error' });
