@@ -4,24 +4,26 @@ dotenv.config();
 
 class Middlwares {
     private static KEY: string | undefined = process.env.SECRET_KEY?.trim();
-    constructor() {}
     async IsValidKey(req: Request, res: Response, next: NextFunction) {
         try {
-            let KEY: string = req.body.KEY;
+            let KEY: string | undefined = req.body.KEY || req.params.KEY;
+
+            if (!KEY) {
+                return res.status(400).json({ message: 'KEY is required' });
+            }
+
             KEY = KEY.trim();
 
-            console.log(Middlwares.KEY);
             if (Middlwares.KEY !== KEY) {
-                console.log(KEY);
+                console.log(`Invalid KEY: ${KEY}`);
                 return res.status(401).json({ message: 'Invalid Request' });
             }
+
             next();
         } catch (e) {
-            console.log(`Error ${e}`);
+            console.error(`Error in IsValidKey middleware: ${e}`);
             res.status(500).json({ message: 'Server error' });
-            return;
         }
     }
 }
-
 export default Middlwares;

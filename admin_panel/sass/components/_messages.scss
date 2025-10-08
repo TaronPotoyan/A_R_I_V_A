@@ -1,4 +1,4 @@
-.Error {
+.Alert {
   position: fixed;
   top: 20px;
   left: 50%;
@@ -7,7 +7,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
-  background-color: $error;
   color: $bg;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -16,12 +15,20 @@
   max-width: 90%;
 
   &__msg {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
   }
 
+  &--error {
+    background-color: $error;
+  }
+
+  &--success {
+    background-color: $success;
+  }
+
   &__close {
-    background-color: rgba(255, 255, 255, 0.2); 
+    background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: $bg;
     font-size: 1.2rem;

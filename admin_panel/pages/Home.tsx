@@ -5,7 +5,7 @@ import type { IPhone } from '../interface/Iphone';
 
 const API: string = import.meta.env.VITE_API;
 
-const PhoneApi = API + '/phones';
+const PhoneApi = API;
 
 export default function Home() {
   const [phones, setPhones] = useState<IPhone[]>([]);
