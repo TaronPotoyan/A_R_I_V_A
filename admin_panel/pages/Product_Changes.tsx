@@ -4,6 +4,8 @@ import type { IPhone } from '../interface/Iphone';
 import axios from 'axios';
 import Message from '../components/Message';
 import Product_description from '../components/Product_description';
+import { Check_Object_Keys } from '../util/Checker_Object';
+import Fallback from '../components/Fallback';
 
 const API: string = import.meta.env.VITE_API;
 const KEY: string = import.meta.env.VITE_KEY;
@@ -32,6 +34,14 @@ export default function Product_Changes() {
 
   const handleSave = () => {
     if (!product) return;
+
+    const isComplete = Check_Object_Keys(Object.keys(product), product);
+
+    if (!isComplete) {
+      setMsg({ text: 'Please fill in all required fields!', type: 'error' });
+      return; // stop the save
+    }
+
     axios
       .patch(`${API}/phones/${id}`, { ...product, KEY })
       .then(() => {
@@ -66,7 +76,7 @@ export default function Product_Changes() {
     }
   }, [msg]);
 
-  if (!product) return <p>Loading...</p>;
+  if (!product) return <Fallback />;
 
   return (
     <>

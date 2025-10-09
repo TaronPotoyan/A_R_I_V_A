@@ -1,0 +1,88 @@
+
+.fallback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $bg-main;
+  color: $text-primary;
+  width: 100%; 
+  box-sizing: border-box;
+
+  &__card {
+    background: $card;
+    padding: 2.5rem 3rem; 
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+    max-width: 500px;
+    margin: 20px; 
+    width: auto; 
+  }
+
+  &__spinner {
+    margin: 0 auto 1.5rem;
+    width: 50px;
+    height: 50px;
+    border: 5px solid $bg;
+    border-top-color: $primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: $primary-dark;
+  }
+
+  &__text {
+    font-size: 1rem;
+    color: $text-secondary;
+  }
+}
+
+@media (max-width: 600px) {
+  .fallback {
+    
+    &__card {
+      padding: 1.5rem 1rem; 
+      width: 90%; 
+      max-width: 90%; 
+      margin: 10px; 
+    }
+
+    &__spinner {
+      width: 40px; 
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+
+    &__title {
+      font-size: 1.25rem;
+    }
+
+    &__text {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,5 +1,8 @@
 import type { IPhone } from '../interface/Iphone';
 
-function Check_Object_Keys(arr: string[], obj: IPhone): Boolean {
-  return arr.every((key: string) => !!obj[key]);
+export function Check_Object_Keys(arr: string[], obj: IPhone): boolean {
+  return arr.every((key: string) => {
+    const value: any = obj[key];
+    return value !== undefined && value !== null && value !== '';
+  });
 }

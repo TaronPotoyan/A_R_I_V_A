@@ -14,10 +14,9 @@ export default function Home() {
     const fetchPhones = async () => {
       try {
         const response: any = await axios.get<IPhone[]>(PhoneApi);
-        console.log(response.data.data);
 
         const phon: IPhone[] = response.data?.data ?? [];
-
+        localStorage.setItem('A_R_I_V_a', JSON.stringify(phon));
         setPhones(phon);
       } catch (e) {
         console.error(`Error fetching phones: ${e}`);

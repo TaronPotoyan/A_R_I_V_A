@@ -1,5 +1,4 @@
 import type { IProductDescriptionProps } from '../interface/IProductDescriptor';
-import Message from './Message';
 
 export default function Product_description({
   product,

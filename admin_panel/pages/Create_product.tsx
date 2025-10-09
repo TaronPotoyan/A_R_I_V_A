@@ -3,6 +3,7 @@ import axios from 'axios';
 import type { IPhone } from '../interface/Iphone';
 import { useState, useEffect } from 'react';
 import Message from '../components/Message';
+import { Check_Object_Keys } from '../util/Checker_Object';
 
 const API: string = import.meta.env.VITE_API;
 const KEY: string = import.meta.env.VITE_KEY;
@@ -41,6 +42,13 @@ export default function CreateProduct() {
   };
 
   const handleSave = () => {
+    const isComplete = Check_Object_Keys(Object.keys(product), product);
+
+    if (!isComplete) {
+      setMsg({ text: 'Please fill in all required fields!', type: 'error' });
+      return;
+    }
+
     axios
       .post(`${API}/phones`, { ...product, KEY })
       .then(() => {
