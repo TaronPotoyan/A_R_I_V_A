@@ -86,11 +86,10 @@ export default function Product_description({
           Screen:
           <input
             type="text"
-            value={`${product?.screenType}, ${product?.screenResolution}`}
+            value={`${product?.screenType}`}
             onChange={(e) => {
-              const [type, resolution] = e.target.value.split(',');
-              handleChange('screenType', type?.trim() || '');
-              handleChange('screenResolution', resolution?.trim() || '');
+              console.log(e.target.value);
+              handleChange('screenType', e.target.value);
             }}
           />
         </label>

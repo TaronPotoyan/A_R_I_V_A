@@ -34,12 +34,12 @@ export default function Product_Changes() {
 
   const handleSave = () => {
     if (!product) return;
-
+    console.log(product);
     const isComplete = Check_Object_Keys(Object.keys(product), product);
 
     if (!isComplete) {
       setMsg({ text: 'Please fill in all required fields!', type: 'error' });
-      return; // stop the save
+      return;
     }
 
     axios
@@ -60,7 +60,7 @@ export default function Product_Changes() {
       .then((res) => {
         setDeleteP(false);
         setMsg({ text: 'Product deleted successfully!', type: 'success' });
-        console.log(res);
+        setProduct(null);
       })
       .catch((err) => {
         console.error(err);

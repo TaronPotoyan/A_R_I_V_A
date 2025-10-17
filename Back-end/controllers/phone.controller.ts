@@ -9,6 +9,24 @@ class PhonesController extends ABS {
         super();
     }
 
+    async GetLen(req: Request, res: Response): Promise<void> {
+        try {
+            const phones: IPhone[] = await Phone.find();
+
+            if (phones.length === 0) {
+                res.status(404).json({ message: 'There is not a phones' });
+                return;
+            }
+            const ServerLen: number = phones.length;
+
+            res.json({ len: ServerLen });
+        } catch (e) {
+            console.error(`Error : ${e}`);
+            res.status(500).json({ message: 'Internal Server Error' });
+            return;
+        }
+    }
+
     async Get(req: Request, res: Response): Promise<void> {
         try {
             const phones = await Phone.find();

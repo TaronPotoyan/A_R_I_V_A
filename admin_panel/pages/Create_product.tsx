@@ -10,13 +10,10 @@ const KEY: string = import.meta.env.VITE_KEY;
 
 export default function CreateProduct() {
   const [product, setProduct] = useState<IPhone>({
-    id: null,
-    _id: null,
     model: '',
     yearOfAnnouncement: '',
     os: '',
     screenType: '',
-    screenResolution: '',
     frontCamera: '',
     mainCamera: '',
     ram: '',
@@ -28,8 +25,6 @@ export default function CreateProduct() {
     image: '',
     value: 0,
     type: '',
-    createdAt: undefined,
-    updatedAt: undefined,
   });
 
   const [msg, setMsg] = useState<{ text: string; type: 'success' | 'error' | 'info' | '' }>({

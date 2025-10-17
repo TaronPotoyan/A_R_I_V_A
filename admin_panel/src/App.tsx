@@ -7,6 +7,7 @@ import Phones from '../pages/Phones';
 import FallBack from '../components/Fallback';
 
 const Home = lazy(() => import('../pages/Home'));
+const Accessories = lazy(() => import('../pages/Accessories'));
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Product />} />
           <Route path="/Phones" element={<Phones />} />
+          <Route path="/Accessories" element={<Accessories />} />x
         </Routes>
       </Suspense>
     </>

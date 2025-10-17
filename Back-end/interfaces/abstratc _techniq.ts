@@ -7,6 +7,9 @@ abstract class ABS {
     abstract Post(req: Request, res: Response): Promise<void>;
     abstract Delete(req: Request, res: Response): Promise<void>;
     abstract Update(req: Request, res: Response): Promise<void>;
+    GetLen(req: Request, res: Response) {
+        return;
+    }
 }
 
 export default ABS;

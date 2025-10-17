@@ -7,13 +7,13 @@ export default function Phones() {
 
   useEffect(() => {
     const phones: IPhone[] | null = JSON.parse(localStorage.getItem('A_R_I_V_A') || 'null');
-    console.log(phones);
     if (phones === null) {
       setPhones([]);
       return;
     }
+    console.log(phones);
 
-    setPhones(phones.filter((i) => i.type !== 'Accessory'));
+    setPhones(phones);
     return;
   }, []);
 

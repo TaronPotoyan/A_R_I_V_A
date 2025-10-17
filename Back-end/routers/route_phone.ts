@@ -15,4 +15,6 @@ route_phone.delete('/:id', midllwares.IsValidKey, PhonesController.Delete);
 
 route_phone.patch('/:id', midllwares.IsValidKey, PhonesController.Update);
 
+route_phone.get('/len/len', PhonesController.GetLen);
+
 export default route_phone;

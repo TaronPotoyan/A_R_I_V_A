@@ -5,7 +5,7 @@ import type { IPhone } from '../interface/Iphone';
 
 const API: string = import.meta.env.VITE_API;
 
-const PhoneApi = API;
+const PhoneApi = API + '/phones';
 
 export default function Home() {
   const [phones, setPhones] = useState<IPhone[]>([]);
@@ -13,11 +13,20 @@ export default function Home() {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response: any = await axios.get<IPhone[]>(PhoneApi);
+        let phone: IPhone[] = JSON.parse(localStorage.getItem('A_R_I_V_A') || '[]');
 
-        const phon: IPhone[] = response.data?.data ?? [];
-        localStorage.setItem('A_R_I_V_a', JSON.stringify(phon));
-        setPhones(phon);
+        let ClientLen: number = phone.length;
+        const response = await axios.get(`${PhoneApi}/len/len`);
+        const ServerLen: number = response.data.len;
+        console.log(ServerLen, ClientLen);
+        if (ClientLen === ServerLen) {
+          setPhones(phone);
+          return;
+        }
+
+        const { data } = await axios.get(`${PhoneApi}`);
+        localStorage.setItem('A_R_I_V_A', JSON.stringify(data.data));
+        setPhones(data.data);
       } catch (e) {
         console.error(`Error fetching phones: ${e}`);
       }

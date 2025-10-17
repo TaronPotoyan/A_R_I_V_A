@@ -1,8 +1,8 @@
 import type { Key } from 'react';
 
 export interface IPhone {
-  id: Key | null | undefined;
-  _id: string | null | undefined;
+  id?: Key | null | undefined;
+  _id?: string | null | undefined;
   model: string;
   yearOfAnnouncement?: string;
   os: string;

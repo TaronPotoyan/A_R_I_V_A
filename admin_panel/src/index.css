@@ -31,7 +31,10 @@ body {
   backdrop-filter: blur(12px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+  transition:
+    background-color 0.4s ease,
+    box-shadow 0.4s ease,
+    backdrop-filter 0.4s ease;
 }
 .header.scrolled {
   background: rgba(55, 48, 163, 0.85);
@@ -68,7 +71,9 @@ body {
   color: #ffffff;
   font-size: 1.7rem;
   cursor: pointer;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 .header__toggle:hover {
   color: #6366f1;
@@ -78,7 +83,9 @@ body {
   overflow: hidden;
   max-height: 1000px;
   opacity: 1;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.4s ease;
 }
 .header__navigation ul.header__navigation-list {
   list-style: none;
@@ -143,7 +150,9 @@ body {
     width: 100%;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.3s ease;
+    transition:
+      max-height 0.5s ease,
+      opacity 0.3s ease;
   }
   .header__navigation ul.header__navigation-list {
     flex-direction: row;
@@ -155,7 +164,9 @@ body {
   }
   .header__navigation ul.header__navigation-list li {
     width: 100%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
     opacity: 0;
     transform: translateY(-8px);
   }
@@ -191,7 +202,10 @@ body {
   justify-content: center;
   gap: 0.5rem;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
 }
 .btn:hover {
   background-color: #6366f1;
@@ -225,7 +239,8 @@ body {
 .card__inner:hover {
   transform: rotateY(180deg);
 }
-.card__front, .card__back {
+.card__front,
+.card__back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -388,7 +403,9 @@ body {
   border: 1px solid rgb(160.770212766, 165.9234042553, 176.229787234);
   border-radius: 6px;
   outline: none;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .product-admin__form label input:focus,
 .product-admin__form label textarea:focus {
@@ -408,7 +425,8 @@ body {
   .product-admin {
     flex-direction: column;
   }
-  .product-admin__image, .product-admin__form {
+  .product-admin__image,
+  .product-admin__form {
     width: 100%;
     max-width: 100%;
   }
@@ -481,8 +499,16 @@ body {
   }
 }
 @keyframes spin {
-  to {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    border-top-color: rgb(121.5402843602, 114.7156398104, 235.2843601896);
+  }
+  100% {
     transform: rotate(360deg);
+    border-top-color: #4f46e5;
   }
 }
 @keyframes fadeIn {

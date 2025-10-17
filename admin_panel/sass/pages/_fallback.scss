@@ -1,4 +1,3 @@
-
 .fallback {
   display: flex;
   justify-content: center;
@@ -6,19 +5,19 @@
   min-height: 100vh;
   background-color: $bg-main;
   color: $text-primary;
-  width: 100%; 
+  width: 100%;
   box-sizing: border-box;
 
   &__card {
     background: $card;
-    padding: 2.5rem 3rem; 
+    padding: 2.5rem 3rem;
     border-radius: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
     animation: fadeIn 0.4s ease-in-out;
     max-width: 500px;
-    margin: 20px; 
-    width: auto; 
+    margin: 20px;
+    width: auto;
   }
 
   &__spinner {
@@ -46,16 +45,15 @@
 
 @media (max-width: 600px) {
   .fallback {
-    
     &__card {
-      padding: 1.5rem 1rem; 
-      width: 90%; 
-      max-width: 90%; 
-      margin: 10px; 
+      padding: 1.5rem 1rem;
+      width: 90%;
+      max-width: 90%;
+      margin: 10px;
     }
 
     &__spinner {
-      width: 40px; 
+      width: 40px;
       height: 40px;
       margin-bottom: 1rem;
     }
@@ -70,9 +68,23 @@
   }
 }
 
+// @keyframes spin {
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
 @keyframes spin {
-  to {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    border-top-color: lighten($primary, 10%);
+  }
+  100% {
     transform: rotate(360deg);
+    border-top-color: $primary;
   }
 }
 
